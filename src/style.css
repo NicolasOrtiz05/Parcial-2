@@ -37,13 +37,3 @@ body {
 .btn {
 	margin-right: 10px;
 }
-
-.filtro-label {
-	color: white;
-	margin-right: 10px;
-}
-
-.filtro-input {
-	background-color: #fff;
-	color: #444;
-}

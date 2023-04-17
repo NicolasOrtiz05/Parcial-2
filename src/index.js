@@ -4,8 +4,9 @@ import { EstudiantesApp } from './EstudianteApp';
 import 'bootstrap/dist/css/bootstrap.css';
 import './style.css';
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-        <EstudiantesApp />
-    </React.StrictMode>
+  <React.StrictMode>
+    <EstudiantesApp />
+  </React.StrictMode>
 )
