@@ -14,19 +14,15 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes, extrae }) => {
 
     return (
         <>
-            <nav className="d-inline-flex p-2 bd-highlight" >
-                <span className="filtro-label">Filtro por Nombre:</span>
-                <form className="form-inline">
-                    <input
-                        className="form-control mr-sm-2 filtro-input"
-                        type="search"
-                        placeholder="Buscar"
-                        aria-label="Buscar"
-                        onChange={filtrado}
-                    />
-                </form>
-            </nav>
-
+            <label htmlFor="filtro">Filtro por facultad: </label>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Seleccione Facultad</option>
+                <option value="ingenieria">Ingeniería</option>
+                <option value="medicina">Medicina</option>
+                <option value="comunicacion">Comunicación</option>
+                <option value="educacion">Eduación</option>
+                <option value="derecho">Derecho</option>
+            </select>
 
             <div className="table-responsive">
                 <table className="table table-striped">
@@ -35,6 +31,7 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes, extrae }) => {
                             <th scope="col">Id Estudiante</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Semestre</th>
+                            <th scope="col">Facultad</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -45,6 +42,7 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes, extrae }) => {
                                     <td>{estudiante.id}</td>
                                     <td>{estudiante.nombre}</td>
                                     <td>{estudiante.semestre}</td>
+                                    <td>{estudiante.facultad}</td>
                                     <td>
                                         <button type="button" className="btn btn-secondary" onClick={() => extrae(index)}>Editar</button>
                                         <button type="button" className="btn btn-dark" onClick={() => eliminar(index)}>Eliminar</button>
