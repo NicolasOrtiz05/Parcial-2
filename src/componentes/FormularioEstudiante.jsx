@@ -54,18 +54,31 @@ export const FormularioEstudiante = ({ agregar, datos, editar, estudiantes }) =>
 
         const idExiste = estudiantes.some(estu => estu.id === id); // some verifica si algo existe.
 
-
-        if (valorBoton == "Registrar") {
-            if (idExiste) {
-                alert(`El ID ${id} ya existe`);
-            } else {
-                agregar(estudiante);
-                limpiar();
+        if (id === "" || nombre === "" || semestre === "") {
+            alert(`Complete todos los espacios primero`);
+        } else {
+            if(nombre.length<3){
+                alert(`El nombre debe ser mayor a 3 caracteres`);
+            }else{
+                if(id.length<6 || id.length>10){
+                    alert(`El id debe ser minimo 6 caracteres y maximo 10`);
+                }else{
+                    if (valorBoton == "Registrar") {
+                        if (idExiste) {
+                            alert(`El ID ${id} ya existe`);
+                        } else {
+                            agregar(estudiante);
+                            limpiar();
+                        }
+                    }
+                    else {
+                        editar(estudiante);
+                        limpiar();
+                    }
+                }
+                
             }
-        }
-        else {
-            editar(estudiante);
-            limpiar();
+            
         }
 
     };
