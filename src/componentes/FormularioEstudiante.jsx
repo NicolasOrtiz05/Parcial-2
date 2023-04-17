@@ -54,22 +54,20 @@ export const FormularioEstudiante = ({ agregar, datos, editar, estudiantes }) =>
 
         const idExiste = estudiantes.some(estu => estu.id === id); // some verifica si algo existe.
 
-        if (id === "" || nombre === "" || semestre === "") {
-            alert(`Complete todos los espacios primero`);
-        } else {
-            if (valorBoton == "Registrar") {
-                if (idExiste) {
-                    alert(`El ID ${id} ya existe`);
-                } else {
-                    agregar(estudiante);
-                    limpiar();
-                }
-            }
-            else {
-                editar(estudiante);
+
+        if (valorBoton == "Registrar") {
+            if (idExiste) {
+                alert(`El ID ${id} ya existe`);
+            } else {
+                agregar(estudiante);
                 limpiar();
             }
         }
+        else {
+            editar(estudiante);
+            limpiar();
+        }
+
     };
 
     return (
@@ -85,7 +83,7 @@ export const FormularioEstudiante = ({ agregar, datos, editar, estudiantes }) =>
                 </div>
                 <div>
                     <label htmlFor="semestre">Semestre</label>
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" value={semestre} onChange={(event) => setSemestre(event.target.value)}>
 
                         <option selected>Seleccione Semestre</option>
                         <option value="1">1</option>
@@ -104,7 +102,7 @@ export const FormularioEstudiante = ({ agregar, datos, editar, estudiantes }) =>
                 <div>
                     <label htmlFor="facultad">Facultad</label>
 
-                    <select class="form-select" aria-label="Default select example">
+                    <select class="form-select" aria-label="Default select example" value={facultad} onChange={(event) => setFacultad(event.target.value)}>
                         <option selected>Seleccione Facultad</option>
                         <option value="ingenieria">Ingeniería</option>
                         <option value="medicina">Medicina</option>
