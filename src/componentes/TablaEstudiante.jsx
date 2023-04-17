@@ -9,14 +9,14 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes, extrae }) => {
     };
 
     const estudiantesFiltrados = listaEstudiantes.filter((estudiante) =>
-        estudiante.nombre.toLowerCase().includes(filtro.toLowerCase())
+        estudiante.facultad.toLowerCase().includes(filtro.toLowerCase())
     );
 
     return (
         <>
             <label htmlFor="filtro">Filtro por facultad: </label>
-            <select class="form-select" aria-label="Default select example">
-                <option selected>Seleccione Facultad</option>
+            <select class="form-select" aria-label="Default select example" onChange={filtrado}>
+                <option value="" selected>Seleccione Facultad</option>
                 <option value="ingenieria">Ingeniería</option>
                 <option value="medicina">Medicina</option>
                 <option value="comunicacion">Comunicación</option>
