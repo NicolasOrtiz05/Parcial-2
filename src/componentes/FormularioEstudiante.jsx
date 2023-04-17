@@ -57,12 +57,12 @@ export const FormularioEstudiante = ({ agregar, datos, editar, estudiantes }) =>
         if (id === "" || nombre === "" || semestre === "") {
             alert(`Complete todos los espacios primero`);
         } else {
-            if(nombre.length<3){
+            if (nombre.length < 3) {
                 alert(`El nombre debe ser mayor a 3 caracteres`);
-            }else{
-                if(id.length<6 || id.length>10){
+            } else {
+                if (id.length < 6 || id.length > 10) {
                     alert(`El id debe ser minimo 6 caracteres y maximo 10`);
-                }else{
+                } else {
                     if (valorBoton == "Registrar") {
                         if (idExiste) {
                             alert(`El ID ${id} ya existe`);
@@ -76,9 +76,9 @@ export const FormularioEstudiante = ({ agregar, datos, editar, estudiantes }) =>
                         limpiar();
                     }
                 }
-                
+
             }
-            
+
         }
 
     };

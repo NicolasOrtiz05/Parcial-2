@@ -14,14 +14,15 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes, extrae }) => {
 
     return (
         <>
+            <br /><br />
             <label htmlFor="filtro">Filtro por facultad: </label>
             <select class="form-select" aria-label="Default select example" onChange={filtrado}>
                 <option value="" selected>Seleccione Facultad</option>
-                <option value="ingenieria">Ingeniería</option>
-                <option value="medicina">Medicina</option>
-                <option value="comunicacion">Comunicación</option>
-                <option value="educacion">Eduación</option>
-                <option value="derecho">Derecho</option>
+                <option value="Ingenieria">Ingeniería</option>
+                <option value="Medicina">Medicina</option>
+                <option value="Comunicacion">Comunicación</option>
+                <option value="Educacion">Eduación</option>
+                <option value="Derecho">Derecho</option>
             </select>
 
             <div className="table-responsive">
