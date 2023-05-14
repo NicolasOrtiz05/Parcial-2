@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
 import { getEstudiantes } from "./peticiones/getEstudiantes";
@@ -33,14 +33,14 @@ export const EstudiantesApp = () => {
         }));
 
     }
-    const cargueEstudiantes=async() =>{
-        const datos=await getEstudiantes()
+    const cargueEstudiantes = async () => {
+        const datos = await getEstudiantes()
         setEstudiantes(datos);
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         cargueEstudiantes();
-    },[])
+    }, [])
     return (
         <>
             <body>
