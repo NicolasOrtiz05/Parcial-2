@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
-import { postEstudiantes } from "../peticiones/postEstudiante";
 
-export const FormularioEstudiante = ({ agregar, datos, editar, estudiantes }) => {
+export const FormularioEstudiante = ({ agregar, datos, editar }) => {
     const [nombre, setNombre] = useState("");
     const [semestre, setSemestre] = useState("");
     const [facultad, setFacultad] = useState("");
@@ -52,12 +51,11 @@ export const FormularioEstudiante = ({ agregar, datos, editar, estudiantes }) =>
                     limpiar();
                 }
                 else {
-                    editar(estudiante);
+                    editar(datos.id, estudiante);
                     limpiar();
                 }
             }
         }
-
     };
 
     return (
