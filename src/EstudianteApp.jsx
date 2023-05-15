@@ -3,7 +3,7 @@ import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
 import { getEstudiantes } from "./peticiones/getEstudiantes";
 import { postEstudiantes } from "./peticiones/postEstudiante";
-import { getEliminarEstudiante } from "./peticiones/getEliminarEsutdiante";
+import { getEliminarEstudiante } from "./peticiones/getEliminarEstudiante";
 import { actualizarEstudiante } from "./peticiones/putActualizarEstudiante";
 
 export const EstudiantesApp = () => {
