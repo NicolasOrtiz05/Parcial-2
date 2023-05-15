@@ -3,6 +3,7 @@ import { FormularioEstudiante } from "./componentes/FormularioEstudiante";
 import { TablaEstudiante } from "./componentes/TablaEstudiante";
 import { getEstudiantes } from "./peticiones/getEstudiantes";
 import { postEstudiantes } from "./peticiones/postEstudiante";
+import { getEliminarEstudiante } from "./peticiones/getEliminarEsutdiante";
 
 export const EstudiantesApp = () => {
 
@@ -11,13 +12,14 @@ export const EstudiantesApp = () => {
     const [estudiantes, setEstudiantes] = useState([]);
 
     const agregarEstudiante = (estudiante) => {
-        postEstudiantes(estudiante);
-        setEstudiantes([...estudiantes, estudiante])
 
+        setEstudiantes([...estudiantes, estudiante])
+        postEstudiantes(estudiante);
     };
 
-    const eliminarEstudiante = (index) => {
+    const eliminarEstudiante = (id, index) => {
         setEstudiantes(estudiantes.filter((_, i) => i !== index));
+        getEliminarEstudiante(id);
     };
 
     const extraeDatos = (index) => {
@@ -47,7 +49,7 @@ export const EstudiantesApp = () => {
             <body>
                 <h1>Lista de Estudiantes</h1>
                 <FormularioEstudiante agregar={(estu) => { agregarEstudiante(estu) }} datos={datos} editar={(index, estudianteEditado) => { editarEstudiante(index, estudianteEditado) }} estudiantes={estudiantes} />
-                <TablaEstudiante eliminar={(index) => eliminarEstudiante(index)} listaEstudiantes={estudiantes} extrae={extraeDatos} />
+                <TablaEstudiante eliminar={(id, index) => eliminarEstudiante(id, index)} listaEstudiantes={estudiantes} extrae={extraeDatos} />
             </body>
         </>
     )

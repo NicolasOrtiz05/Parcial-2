@@ -49,25 +49,20 @@ export const FormularioEstudiante = ({ agregar, datos, editar, estudiantes }) =>
             } else {
                 if (valorBoton == "Registrar") {
                     agregar(estudiante);
-                    postEstudiantes(estudiante);
                     limpiar();
-                    window.location.reload();
                 }
                 else {
                     editar(estudiante);
                     limpiar();
-                    window.location.reload();
                 }
-
             }
-
         }
 
     };
 
     return (
         <>
-            <form>
+            <form onSubmit={() => { guardarEstudiante(boton); botonMostrar(1); }}>
                 <div className="form-group">
                     <label htmlFor="nombre">Nombre</label>
                     <input type="text" className="form-control" id="nombre" placeholder="nombre" value={nombre} onChange={(event) => setNombre(event.target.value)} />
@@ -107,10 +102,11 @@ export const FormularioEstudiante = ({ agregar, datos, editar, estudiantes }) =>
                     <label htmlFor="programa">Programa</label>
                     <input type="text" className="form-control" id="programa" placeholder="programa" value={programa} onChange={(event) => setPrograma(event.target.value)} />
                 </div>
-
+                <br></br>
+                <button type="submit" className="btn btn-danger" >{boton}</button>
             </form>
-            <br></br>
-            <button type="submit" className="btn btn-danger" onClick={() => { guardarEstudiante(boton); botonMostrar(1) }} >{boton}</button>
+
+
         </>
     )
 }
