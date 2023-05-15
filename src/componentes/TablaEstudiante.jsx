@@ -33,6 +33,7 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes, extrae }) => {
                             <th scope="col">Nombre</th>
                             <th scope="col">Semestre</th>
                             <th scope="col">Facultad</th>
+                            <th scope="col">Programa</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -44,6 +45,7 @@ export const TablaEstudiante = ({ eliminar, listaEstudiantes, extrae }) => {
                                     <td>{estudiante.nombre}</td>
                                     <td>{estudiante.semestre}</td>
                                     <td>{estudiante.facultad}</td>
+                                    <td>{estudiante.programa}</td>
                                     <td>
                                         <button type="button" className="btn btn-secondary" onClick={() => extrae(index)}>Editar</button>
                                         <button type="button" className="btn btn-dark" onClick={() => eliminar(index)}>Eliminar</button>

@@ -11,8 +11,9 @@ export const EstudiantesApp = () => {
     const [estudiantes, setEstudiantes] = useState([]);
 
     const agregarEstudiante = (estudiante) => {
-        setEstudiantes([...estudiantes, estudiante])
         postEstudiantes(estudiante);
+        setEstudiantes([...estudiantes, estudiante])
+
     };
 
     const eliminarEstudiante = (index) => {
