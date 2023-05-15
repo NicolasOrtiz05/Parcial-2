@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
+import { postEstudiantes } from "../peticiones/postEstudiante";
 
 export const FormularioEstudiante = ({ agregar, datos, editar, estudiantes }) => {
-    const [id, setId] = useState("");
     const [nombre, setNombre] = useState("");
     const [semestre, setSemestre] = useState("");
     const [facultad, setFacultad] = useState("");
+    const [programa, setPrograma] = useState("");
     const [boton, setBoton] = useState("Registrar");
 
     const botonMostrar = (index) => {
@@ -16,65 +17,45 @@ export const FormularioEstudiante = ({ agregar, datos, editar, estudiantes }) =>
         }
     };
 
-    const desabiliBoton = (index) => {
-        const ide = document.getElementById('id');
-        if (index == 0) {
-            ide.disabled = true;
-        } else {
-            ide.disabled = false;
-        }
-    };
-
     useEffect(() => {
         if (datos) {
-            setId(datos.id);
-            desabiliBoton(0)
             setNombre(datos.nombre);
             setSemestre(datos.semestre);
             setFacultad(datos.facultad);
+            setPrograma(datos.programa)
             botonMostrar(0);
-
         }
     }, [datos]);
 
     const limpiar = () => {
-        setId("");
         setNombre("");
         setSemestre("");
         setFacultad("");
+        setPrograma("");
     };
 
     const guardarEstudiante = (valorBoton) => {
         let estudiante = {
-            id: id,
             nombre: nombre,
             semestre: semestre,
-            facultad: facultad
+            facultad: facultad,
+            programa: programa
         };
 
-        const idExiste = estudiantes.some(estu => estu.id === id); // some verifica si algo existe.
-
-        if (id === "" || nombre === "" || semestre === "") {
+        if (nombre === "" || semestre === "" || programa === "") {
             alert(`Complete todos los espacios primero`);
         } else {
             if (nombre.length < 3) {
                 alert(`El nombre debe ser mayor a 3 caracteres`);
             } else {
-                if (id.length < 6 || id.length > 10) {
-                    alert(`El id debe ser minimo 6 caracteres y maximo 10`);
-                } else {
-                    if (valorBoton == "Registrar") {
-                        if (idExiste) {
-                            alert(`El ID ${id} ya existe`);
-                        } else {
-                            agregar(estudiante);
-                            limpiar();
-                        }
-                    }
-                    else {
-                        editar(estudiante);
-                        limpiar();
-                    }
+                if (valorBoton == "Registrar") {
+                    agregar(estudiante);
+                    postEstudiantes(estudiante);
+                    limpiar();
+                }
+                else {
+                    editar(estudiante);
+                    limpiar();
                 }
 
             }
@@ -86,10 +67,6 @@ export const FormularioEstudiante = ({ agregar, datos, editar, estudiantes }) =>
     return (
         <>
             <form>
-                <div className="form-group ">
-                    <label htmlFor="id">ID Estudiante</label>
-                    <input type="number" className="form-control" id="id" placeholder="Ingrese id" value={id} onChange={(event) => setId(event.target.value)} />
-                </div>
                 <div className="form-group">
                     <label htmlFor="nombre">Nombre</label>
                     <input type="text" className="form-control" id="nombre" placeholder="nombre" value={nombre} onChange={(event) => setNombre(event.target.value)} />
@@ -125,9 +102,15 @@ export const FormularioEstudiante = ({ agregar, datos, editar, estudiantes }) =>
                     </select>
                 </div>
 
+                <div className="form-group">
+                    <label htmlFor="programa">Programa</label>
+                    <input type="text" className="form-control" id="programa" placeholder="programa" value={programa} onChange={(event) => setPrograma(event.target.value)} />
+                </div>
+                <br></br>
+                <button type="submit" className="btn btn-danger" onClick={() => { guardarEstudiante(boton); botonMostrar(1) }} >{boton}</button>
             </form>
-            <br></br>
-            <button type="submit" className="btn btn-danger" onClick={() => { guardarEstudiante(boton); botonMostrar(1); desabiliBoton(1) }} >{boton}</button>
+
+
         </>
     )
 }
