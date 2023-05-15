@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export const TablaEstudiante = ({ eliminar, listaEstudiantes, extrae }) => {
 
-    const [filtroFacultad, setFiltroFacultad] = useState(""); // Cambio en el nombre del estado
+    const [filtroFacultad, setFiltroFacultad] = useState(""); 
 
     const filtrado = (event) => {
         setFiltroFacultad(event.target.value);
